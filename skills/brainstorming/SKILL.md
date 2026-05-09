@@ -57,7 +57,7 @@ digraph brainstorming {
 }
 ```
 
-**终态是调用 writing-plans。** 不要调用 frontend-design、mcp-builder 或任何其他实现类 skill。头脑风暴之后**唯一**应该调用的 skill 就是 writing-plans。
+**终态是调用 writing-plans。** 不要调用任何其他实现类 skill。头脑风暴之后**唯一**应该调用的 skill 就是 writing-plans。
 
 ## 流程详解
 
