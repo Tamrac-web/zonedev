@@ -1,0 +1,19 @@
+{
+  "name": "zonedev-dev",
+  "description": "Zonedev 核心技能库本地开发市场",
+  "owner": {
+    "name": "zone",
+    "email": "7zofun7@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "zonedev",
+      "description": "核心技能库中文版：TDD、调试、协作模式和经过验证的技术方法",
+      "version": "1.0.0",
+      "source": "./",
+      "author": {
+        "name": "zone"
+      }
+    }
+  ]
+}
