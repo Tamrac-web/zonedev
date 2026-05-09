@@ -15,29 +15,7 @@ description: 在当前会话中执行实现计划，将独立任务分派给 sub
 
 ## 何时使用
 
-```dot
-digraph when_to_use {
-    "有实现计划？" [shape=diamond];
-    "任务大多独立？" [shape=diamond];
-    "留在当前会话？" [shape=diamond];
-    "subagent-driven-development" [shape=box];
-    "executing-plans" [shape=box];
-    "手动执行或先头脑风暴" [shape=box];
-
-    "有实现计划？" -> "任务大多独立？" [label="是"];
-    "有实现计划？" -> "手动执行或先头脑风暴" [label="否"];
-    "任务大多独立？" -> "留在当前会话？" [label="是"];
-    "任务大多独立？" -> "手动执行或先头脑风暴" [label="否 - 紧耦合"];
-    "留在当前会话？" -> "subagent-driven-development" [label="是"];
-    "留在当前会话？" -> "executing-plans" [label="否 - 并行会话"];
-}
-```
-
-**对比 Executing Plans（并行会话）：**
-- 同一会话（无上下文切换）
-- 每个任务一个全新的 subagent（无上下文污染）
-- 每个任务完成后进行两阶段审查：先规格合规性，再代码质量
-- 更快的迭代（任务之间无需用户介入）
+由 writing-plans 自动路由：3 个以上任务或涉及多文件协调的标准计划使用本 skill。≤2 个任务的小型计划直接在当前会话内联执行。
 
 ## 流程
 
@@ -203,17 +181,6 @@ digraph process {
 
 ## 优势
 
-**对比手动执行：**
-- Subagent 自然遵循 TDD
-- 每个任务的上下文是全新的（无混淆）
-- 并行安全（subagent 之间不会相互干扰）
-- Subagent 可以提问（工作前和工作中都可以）
-
-**对比 Executing Plans：**
-- 同一会话（无交接）
-- 持续进展（无需等待）
-- 审查检查点自动执行
-
 **效率提升：**
 - 无文件读取开销（控制者提供全文）
 - 控制者精确策划所需的上下文
@@ -274,6 +241,3 @@ digraph process {
 
 **Subagent 应使用：**
 - **zonedev:test-driven-development** - Subagent 在每个任务中遵循 TDD
-
-**替代工作流：**
-- **zonedev:executing-plans** - 用于并行会话而非同一会话执行

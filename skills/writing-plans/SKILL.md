@@ -49,7 +49,7 @@ description: "当你有规格说明或需求需要完成多步骤任务时使用
 ```markdown
 # [功能名称] 实施计划
 
-> **给 agentic 执行者：** 必须使用的子 SKILL：使用 zonedev:subagent-driven-development（推荐）或 zonedev:executing-plans 来逐任务实施此计划。步骤使用 checkbox（`- [ ]`）语法进行跟踪。
+> **给 agentic 执行者：** 使用 zonedev:subagent-driven-development 逐任务实施此计划。步骤使用 checkbox（`- [ ]`）语法进行跟踪。
 
 **目标：** [一句话描述要构建什么]
 
@@ -134,20 +134,17 @@ git commit -m "feat: add specific feature"
 
 ## 执行交接
 
-保存计划后，提供执行选择：
+保存计划后，根据计划规模自动决定执行方式：
 
-**"计划已完成并保存到 `docs/zonedev/plans/<filename>.md`。两种执行方式：**
+**小型计划（≤2 个任务，且每个任务涉及 1-2 个文件）：**
+- 直接在当前会话中执行，无需调用额外 skill
+- 按计划步骤逐个执行，遵循 TDD 循环，每个任务完成后提交
+- 完成后调用 zonedev:finishing-a-development-branch
 
-**1. Subagent 驱动（推荐）** - 我为每个任务派遣一个全新的 subagent，任务之间进行审查，快速迭代
-
-**2. 内联执行** - 在当前会话中使用 executing-plans 执行任务，批量执行并设置检查点
-
-**选择哪种方式？"**
-
-**如果选择 Subagent 驱动：**
+**标准计划（3 个以上任务，或任务涉及多文件协调）：**
 - **必须使用的子 SKILL：** 使用 zonedev:subagent-driven-development
 - 每个任务一个全新的 subagent + 两阶段审查
 
-**如果选择内联执行：**
-- **必须使用的子 SKILL：** 使用 zonedev:executing-plans
-- 批量执行并设置审查检查点
+**向用户报告决策：**
+
+> "计划已完成并保存到 `<path>`。计划包含 N 个任务，[直接执行 / 使用 subagent-driven-development 执行]。"

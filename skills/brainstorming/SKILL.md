@@ -104,7 +104,6 @@ digraph brainstorming {
 
 - 将验证通过的设计（规格说明）写入 `docs/zonedev/specs/YYYY-MM-DD-<topic>-design.md`
   - （用户对设计文档存放位置的偏好优先于此默认值）
-- 如果可用，使用 elements-of-style:writing-clearly-and-concisely skill
 - 将设计文档提交到 git
 
 **设计文档自审：**

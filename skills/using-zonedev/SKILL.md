@@ -83,7 +83,7 @@ digraph skill_flow {
 当多个 skill 可能适用时，使用以下顺序：
 
 1. **先用过程性 skill**（brainstorming、systematic-debugging）——它们决定如何切入任务
-2. **再用实现性 skill**（test-driven-development、executing-plans）——它们指导具体执行
+2. **再用实现性 skill**（test-driven-development、subagent-driven-development）——它们指导具体执行
 
 "来构建 X"→ 先 brainstorming，再用实现性 skill。
 "修复这个 bug"→ 先 systematic-debugging，再用领域特定的 skill。
