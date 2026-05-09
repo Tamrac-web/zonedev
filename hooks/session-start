@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# SessionStart hook for zonedev plugin (superpowers 中文版)
+# SessionStart hook for zonedev plugin
 
 set -euo pipefail
 
@@ -8,7 +8,7 @@ PLUGIN_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
 warning_message=""
 
-using_superpowers_content=$(cat "${PLUGIN_ROOT}/skills/using-superpowers/SKILL.md" 2>&1 || echo "Error reading using-superpowers skill")
+using_zonedev_content=$(cat "${PLUGIN_ROOT}/skills/using-zonedev/SKILL.md" 2>&1 || echo "Error reading using-zonedev skill")
 
 escape_for_json() {
     local s="$1"
@@ -20,9 +20,9 @@ escape_for_json() {
     printf '%s' "$s"
 }
 
-using_superpowers_escaped=$(escape_for_json "$using_superpowers_content")
+using_zonedev_escaped=$(escape_for_json "$using_zonedev_content")
 warning_escaped=$(escape_for_json "$warning_message")
-session_context="<EXTREMELY_IMPORTANT>\n你拥有超级技能。\n\n**以下是 'zonedev:using-superpowers' 技能的完整内容 - 你的技能使用入门指南。其他所有技能请使用 Skill 工具调用：**\n\n${using_superpowers_escaped}\n\n${warning_escaped}\n</EXTREMELY_IMPORTANT>"
+session_context="<EXTREMELY_IMPORTANT>\n你拥有超级技能。\n\n**以下是 'zonedev:using-zonedev' 技能的完整内容 - 你的技能使用入门指南。其他所有技能请使用 Skill 工具调用：**\n\n${using_zonedev_escaped}\n\n${warning_escaped}\n</EXTREMELY_IMPORTANT>"
 
 if [ -n "${CURSOR_PLUGIN_ROOT:-}" ]; then
   printf '{\n  "additional_context": "%s"\n}\n' "$session_context"
