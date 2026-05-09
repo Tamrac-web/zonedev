@@ -1,7 +1,7 @@
 {
   "name": "zonedev",
   "description": "核心技能库中文版：TDD、调试、协作模式和经过验证的技术方法",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": {
     "name": "zone"
   },
